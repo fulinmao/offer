@@ -11,7 +11,6 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
+# 删除idea 的项目文件
 .idea/*
-将删除 .idea/
-将删除 bin/
-将删除 test/
+*.iml
