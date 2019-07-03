@@ -14,13 +14,11 @@ public class ReplaceBlank {
 		// TODO Auto-generated method stub
 		String str= "We are Happy.";
 		String target = "%20";
-		char[] strArray = str.toCharArray();
-		strArray = replaceBlank(strArray, target);
-		System.out.println(new String(strArray));
+		System.out.println(replaceBlank(str, target));
 	}
 
-	public static char[] replaceBlank(char[] str ,String target){
-		if(str == null || str.length == 0){
+	public static String replaceBlank(String str ,String target){
+		if(str == null || str.length() == 0){
 			return null;
 		}
 		int length = 0;
@@ -32,17 +30,18 @@ public class ReplaceBlank {
 		}
 		int count = 0;
 		int lastIndex = 0;
-		for(int i=0;i<str.length;i++){
-			if(str[i] == ' '){
+		char[] strArray = str.toCharArray();
+		for(int i=0;i<strArray.length;i++){
+			if(strArray[i] == ' '){
 				count++;
 				lastIndex =i;
 			}
 		}
-		int oldLength = str.length;
+		int oldLength = strArray.length;
 		int newLength = oldLength + count *(length - 1);
-		if(newLength > str.length){
-			char[] temp = str;
-			str = new char[newLength];
+		if(newLength > strArray.length){
+			char[] temp = strArray;
+			strArray = new char[newLength];
 			System.arraycopy(temp, 0, str, 0,temp.length);
 		}
 
@@ -53,7 +52,7 @@ public class ReplaceBlank {
 		updateIndex = updateIndex - copyLength;
 		System.arraycopy(target.toCharArray(), 0, str, updateIndex, target.length());
 		for(int i = lastIndex -1 ; i>=0;i--){
-			if(str[i] == ' '){
+			if(strArray[i] == ' '){
 				copyLength = lastIndex - i -1;
 				updateIndex = updateIndex - copyLength;
 				System.arraycopy(str, i + 1, str, updateIndex, copyLength);
@@ -63,6 +62,6 @@ public class ReplaceBlank {
 				lastIndex = i;
 			}
 		}
-		return str;
+		return new String(strArray);
 	}
 }
