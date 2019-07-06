@@ -13,7 +13,6 @@ import java.util.Stack;
 public class QueueWithTwoStacks {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		Queue queue = new Queue();
 		queue.appendTail(1);
 		queue.appendTail(2);
@@ -53,10 +52,6 @@ class Queue {
 		}
 		result = stackReverse.pop();
 
-//		while(!stackReverse.isEmpty()){
-//			int value = stack.pop();
-//			stack.add(value);
-//		}
 		return result;
 	}
 
