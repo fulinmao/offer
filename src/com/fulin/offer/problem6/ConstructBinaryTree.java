@@ -1,5 +1,7 @@
 package com.fulin.offer.problem6;
 
+import com.fulin.utils.TreeNode;
+
 import java.util.Arrays;
 
 /**
@@ -23,7 +25,7 @@ public class ConstructBinaryTree {
 		int[] preOrder = {1,2,4,7,3,5,6,8};
 		int[] inOrder = {4,7,2,1,5,3,8,6};
 		TreeNode head = constructBinaryTree(preOrder, inOrder);
-		System.out.println(head.value);
+		System.out.println(head.val);
 	}
 
 	public static TreeNode constructBinaryTree(int[] preOrder ,int[] inOrder){
@@ -36,12 +38,7 @@ public class ConstructBinaryTree {
 		if(preOrder.length != inOrder.length){
 			return null;
 		}
-		TreeNode head = new TreeNode(-1);
-		if(preOrder.length == 1){
-			head = new TreeNode(preOrder[0]);
-			return head;
-		}
-		head = new TreeNode(preOrder[0]);
+		TreeNode head = new TreeNode(preOrder[0]);
 		int index = search(inOrder , 0, inOrder.length - 1,preOrder[0]);
 		if(index < 0){
 			return null;
@@ -52,18 +49,29 @@ public class ConstructBinaryTree {
 		return head;
 	}
 
-	private static TreeNode constructTree(int[] preOrder , int start , int end ,int[] inOrder,int start1 ,int end1){
-		if(start > end){
+	private static TreeNode constructTree(int[] pre , int pStart , int pEnd ,int[] in,int iStart ,int iEnd){
+		if(pStart > pEnd || iStart > iEnd){
 			return null;
 		}
-		if(start1 > end1){
+
+		TreeNode head = new TreeNode(pre[pStart]);
+		int index = search(in, iStart, iEnd, pre[pStart]);
+		if(index < 0){
 			return null;
 		}
-		TreeNode head = new TreeNode(preOrder[start]);
-		int index = search(inOrder, start1, end1, preOrder[start]);
-		int length = index - start1;
-		head.left = constructTree(preOrder, start +1 ,start + length , inOrder, start1, index-1);
-		head.right = constructTree(preOrder, start + length +1, end, inOrder, index + 1, end1);
+
+		int pLeftStart = pStart+1;
+		int pLeftEnd = index - iStart + pStart;
+		int pRightStart = pLeftEnd +1;
+		int pRightEnd = pEnd;
+
+		int iLeftStart = iStart;
+		int iLeftEnd = index - 1;
+		int iRightStart = index + 1;
+		int iRightEnd = iEnd;
+
+		head.left = constructTree(pre, pLeftStart, pLeftEnd, in, iLeftStart, iLeftEnd);
+		head.right = constructTree(pre, pRightStart, pRightEnd, in, iRightStart, iRightEnd);
 		return head;
 	}
 
@@ -87,14 +95,3 @@ public class ConstructBinaryTree {
 	}
 }
 
-class TreeNode {
-	int value ;
-	TreeNode left;
-	TreeNode right;
-
-	TreeNode(int value){
-		this.value = value;
-		this.left = null;
-		this.right = null;
-	}
-}
