@@ -11,7 +11,6 @@ package com.fulin.offer.problem4;
 public class ReplaceBlank {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
         String str = "We are Happy.";
         String target = "%20";
         System.out.println(replaceBlank(str, target));
