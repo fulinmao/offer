@@ -5,12 +5,6 @@ package com.fulin.offer.problem10;
  */
 public class NumberOf1InBinary {
 
-    public static void main(String[] args){
-        int n = -10;
-        System.out.println(Integer.toBinaryString(n));
-        int result = numberof1InBinary(n);
-        System.out.println(result);
-    }
 
     public static int numberof1InBinary(int n){
         int result = 0;
