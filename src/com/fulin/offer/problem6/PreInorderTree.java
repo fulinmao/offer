@@ -1,5 +1,7 @@
 package com.fulin.offer.problem6;
 
+import com.fulin.utils.TreeNode;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,7 +45,7 @@ public class PreInorderTree {
 		if(head == null){
 			return list;
 		}
-		list.add(head.value);
+		list.add(head.val);
 		if(head.left!= null){
 			list.addAll(preOrder(head.left));
 		}
@@ -58,7 +60,7 @@ public class PreInorderTree {
 		if(head == null ){
 			return list;
 		}
-		list.add(head.value);
+		list.add(head.val);
 		if(head.left != null){
 			list.addAll(preOrder(head.left));
 		}

@@ -42,6 +42,7 @@ public class FindInPartiallySortedMatrix {
 				break;
 			}else if(matrix[i][j] > target){
 				j --;
+				continue;
 			}else if(matrix[i][j] < target){
 				i ++;
 			}

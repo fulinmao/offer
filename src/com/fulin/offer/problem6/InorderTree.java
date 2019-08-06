@@ -1,5 +1,7 @@
 package com.fulin.offer.problem6;
 
+import com.fulin.utils.TreeNode;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,7 +51,7 @@ public class InorderTree {
 		if(head.left!= null){
 			list.addAll(inOrder(head.left));
 		}
-		list.add(head.value);
+		list.add(head.val);
 		if(head.right != null){
 			list.addAll(inOrder(head.right));
 		}
@@ -64,7 +66,7 @@ public class InorderTree {
 		if(head.left != null){
 			list.addAll(inOrder(head.left));
 		}
-		list.add(head.value);
+		list.add(head.val);
 		if(head.right != null){
 			list.addAll(inOrder(head.right));
 		}

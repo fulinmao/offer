@@ -10,10 +10,6 @@ package com.fulin.offer.problem11;
  */
 public class Power {
 
-    public static void main(String[] args){
-
-    }
-
     public static double power(double base , int exponent){
         double result = 0;
         // 情况1： base: 0 exponent:
@@ -61,4 +57,5 @@ public class Power {
 
         return result;
     }
+
 }
